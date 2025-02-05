@@ -9,6 +9,7 @@ import projectRoutes from './routes/projectRoutes'
 
 dotenv.config()
 
+console.log('Frontend URL desde Render:', process.env.FRONTEND_URL || 'No está definida');
 connectDB()
 
 const app = express()
