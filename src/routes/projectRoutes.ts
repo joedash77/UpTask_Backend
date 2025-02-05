@@ -13,6 +13,14 @@ const router = Router()
 
 router.use(authenticate)
 
+router.get('/test-cors', (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL || '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.json({ message: 'CORS funcionando', frontend: process.env.FRONTEND_URL });
+});
+
 router.post('/',
     body('projectName')
         .notEmpty().withMessage('El Nombre del Proyecto es Obligatorio'),
